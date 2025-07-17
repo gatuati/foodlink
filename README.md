@@ -47,5 +47,10 @@ MONGO_URI=your_atlas_uri_here
 JWT_SECRET=your_jwt_secret
 VITE_API_URL=https://foodlink.onrender.com
 cd server && npm run start
+
+Screenshots
+<img width="1692" height="857" alt="image" src="https://github.com/user-attachments/assets/12c0ad80-e5e3-4e12-ad46-8d19894db88c" />
+<img width="922" height="541" alt="image" src="https://github.com/user-attachments/assets/ede67e03-1175-4750-b225-30a8cac60a3e" />
+
 cd client && npm run dev
 
