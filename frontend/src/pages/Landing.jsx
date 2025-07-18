@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Landing() {
   return (
@@ -16,12 +17,12 @@ function Landing() {
       <div className="relative z-10 text-center bg-black bg-opacity-50 p-8 rounded-lg shadow-lg text-white max-w-xl mx-auto">
         <h1 className="text-4xl font-extrabold mb-4">Welcome to FoodLink</h1>
         <p className="text-lg mb-6">Help reduce hunger by donating surplus food.</p>
-        <a
-          href="/donate"
+        <Link
+          to="/donate"
           className="inline-block bg-yellow-400 text-black font-semibold px-6 py-2 rounded hover:bg-yellow-300 transition"
         >
           🍽️ Donate Now
-        </a>
+        </Link>
       </div>
     </div>
   );
