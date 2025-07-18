@@ -5,9 +5,9 @@ function Home() {
   const [donations, setDonations] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/donations')
+    axios.get(`${import.meta.env.VITE_API_URL}/api/donations`)
       .then(res => setDonations(res.data))
-      .catch(err => console.error(err));
+      .catch(err => console.error('Error fetching donations:', err));
   }, []);
 
   return (
@@ -18,13 +18,9 @@ function Home() {
       ) : (
         <ul className="space-y-4">
           {donations.map(donation => (
-            <li 
-              key={donation._id} 
-              className="bg-white p-4 shadow-md rounded-md border border-gray-200"
-            >
+            <li key={donation._id} className="bg-white p-4 shadow-md rounded-md border border-gray-200">
               <p className="text-lg font-semibold text-gray-800">
-                {donation.foodName} 
-                <span className="text-sm text-gray-500"> ({donation.quantity})</span>
+                {donation.foodName} <span className="text-sm text-gray-500">({donation.quantity})</span>
               </p>
               <p className="text-sm text-gray-600">
                 From <span className="font-medium">{donation.donor}</span> at <span className="italic">{donation.location}</span>
