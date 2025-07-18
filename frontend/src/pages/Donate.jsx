@@ -16,16 +16,17 @@ function Donate() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/donations', formData);
-      alert('Donation added!');
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/donations`, formData);
+      alert('✅ Donation added successfully!');
       setFormData({ foodName: '', quantity: '', donor: '', location: '' });
     } catch (err) {
-      alert('Error adding donation');
+      console.error('Error adding donation:', err);
+      alert('❌ Error adding donation. Please try again.');
     }
   };
 
   return (
-    <div className="p-6 max-w-md mx-auto bg-white rounded-md shadow-md">
+    <div className="p-6 max-w-md mx-auto bg-white rounded-md shadow-md mt-10">
       <h2 className="text-2xl font-bold mb-4 text-center text-green-700">🍲 Donate Food</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <input
