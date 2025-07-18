@@ -1,5 +1,4 @@
-import React from 'react';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 import Sidebar from '../components/Sidebar';
@@ -9,6 +8,14 @@ import TopDonorsCard from '../components/TopDonorsCard';
 import RecentTransactions from '../components/RecentTransactions';
 
 function AdminDashboard() {
+  const [donationStats, setDonationStats] = useState(null);
+
+  useEffect(() => {
+    axios.get(`${import.meta.env.VITE_API_URL}/api/donations/stats`)
+      .then(res => setDonationStats(res.data))
+      .catch(err => console.error('Error fetching donation stats:', err));
+  }, []);
+
   return (
     <div className="flex">
       <Sidebar />
@@ -34,7 +41,9 @@ function AdminDashboard() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
           <div className="bg-white rounded-md shadow-md p-4">
             <h3 className="text-xl font-semibold text-green-700 mb-4">Total Donations</h3>
-            <p className="text-gray-800 text-2xl font-bold">📦 432 items</p>
+            <p className="text-gray-800 text-2xl font-bold">
+              📦 {donationStats ? donationStats.totalItems : 'Loading...'} items
+            </p>
             <p className="text-gray-600 mt-2">Collected this month</p>
           </div>
 
